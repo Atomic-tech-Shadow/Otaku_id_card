@@ -3,7 +3,7 @@ import { CardEditor } from './components/CardEditor';
 import { CardPreview } from './components/CardPreview';
 import { useCardRenderer } from './hooks/useCardRenderer';
 import { FormData } from './types';
-import { ShieldAlert, Lock } from 'lucide-react';
+import { ShieldAlert, BadgeCheck } from 'lucide-react';
 import oiaLogo from './assets/oia-logo.svg';
 
 const DEFAULT_FORM_DATA: FormData = {
@@ -71,11 +71,16 @@ export default function App() {
           <a href="#" className="hover:text-slate-100 transition-colors">CONTACT</a>
         </div>
 
-        <div className="flex items-center gap-1.5 sm:gap-3 bg-red-950/30 border border-red-900/50 px-2 sm:px-3 py-1 sm:py-1.5 rounded-sm animate-slow-pulse shrink-0">
-          <Lock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-red-500" />
-          <span className="text-[9px] sm:text-xs font-bold tracking-wider sm:tracking-widest text-red-500 whitespace-nowrap">
-            <span className="hidden sm:inline">CLASSIFICATION: </span>SECRET
-          </span>
+        <div className="flex items-center gap-2 sm:gap-2.5 bg-[#1a1400]/60 border border-[#d4af37]/40 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-sm animate-slow-pulse shrink-0 shadow-[0_0_12px_rgba(212,175,55,0.15)]">
+          <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#d4af37] shrink-0" strokeWidth={1.5} />
+          <div className="flex flex-col leading-none">
+            <span className="text-[8px] sm:text-[9px] font-mono font-bold tracking-[0.2em] text-[#d4af37]/70 uppercase hidden sm:block">
+              Organisme Certifié
+            </span>
+            <span className="text-[9px] sm:text-[10px] font-mono font-black tracking-widest text-[#d4af37] uppercase whitespace-nowrap">
+              ACCRÉDITÉ ALPHA
+            </span>
+          </div>
         </div>
       </nav>
 
