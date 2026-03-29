@@ -3,7 +3,8 @@ import { CardEditor } from './components/CardEditor';
 import { CardPreview } from './components/CardPreview';
 import { useCardRenderer } from './hooks/useCardRenderer';
 import { FormData } from './types';
-import { ShieldAlert, Hexagon, Lock } from 'lucide-react';
+import { ShieldAlert, Lock } from 'lucide-react';
+import oiaLogo from './assets/oia-logo.svg';
 
 const DEFAULT_FORM_DATA: FormData = {
   nom: 'SAITAMA',
@@ -52,10 +53,10 @@ export default function App() {
       {/* Top Navigation Bar */}
       <nav className="border-b border-slate-800 bg-[#0f1629] relative z-20 px-4 sm:px-6 py-3 flex items-center justify-between gap-3 shadow-lg">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <Hexagon className="w-6 h-6 sm:w-8 sm:h-8 text-[#b91c1c] shrink-0" fill="currentColor" fillOpacity={0.2} strokeWidth={1.5} />
+          <img src={oiaLogo} alt="O.I.A. Logo" className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 drop-shadow-lg" />
           <div className="flex flex-col min-w-0">
             <span className="text-base sm:text-xl font-bold tracking-widest text-slate-100">
-              ⬡ O.I.A.
+              O.I.A.
             </span>
             <span className="text-[8px] sm:text-[9px] font-medium tracking-[0.15em] sm:tracking-[0.2em] text-slate-500 uppercase truncate">
               Otaku International Agency
