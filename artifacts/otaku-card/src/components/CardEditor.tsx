@@ -13,10 +13,11 @@ interface InputFieldProps {
   required?: boolean;
   isSelect?: boolean;
   options?: string[];
+  uppercase?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
-function InputField({ label, code, name, value, type = 'text', inputMode, pattern, required = true, isSelect = false, options = [], onChange }: InputFieldProps) {
+function InputField({ label, code, name, value, type = 'text', inputMode, pattern, required = true, isSelect = false, options = [], uppercase = true, onChange }: InputFieldProps) {
   return (
     <div className="group flex flex-col gap-1.5">
       <div className="flex justify-between items-end">
@@ -44,7 +45,7 @@ function InputField({ label, code, name, value, type = 'text', inputMode, patter
             name={name}
             value={value}
             onChange={onChange}
-            className="oia-input w-full p-2.5 pl-12 sm:pl-16 text-sm font-mono uppercase touch-manipulation"
+            className={`oia-input w-full p-2.5 pl-12 sm:pl-16 text-sm font-mono touch-manipulation ${uppercase ? 'uppercase' : 'lowercase'}`}
           />
         )}
       </div>
@@ -119,6 +120,14 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
               />
               <InputField label="Niveau (0-100)" code="T03" name="powerLevel" type="text" inputMode="numeric" pattern="[0-9]*" value={formData.powerLevel} onChange={onChange} />
             </div>
+          </div>
+
+          {/* QR Code URL */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 text-xs text-[#d4af37] uppercase font-bold tracking-widest border-b border-slate-800 pb-2">
+              <Shield className="w-3.5 h-3.5" /> LIEN QR CODE
+            </div>
+            <InputField label="URL du QR Code" code="Q01" name="qrUrl" value={formData.qrUrl} required={false} uppercase={false} onChange={onChange} />
           </div>
 
           {/* Biometrics */}

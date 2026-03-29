@@ -18,6 +18,7 @@ const DEFAULT_FORM_DATA: FormData = {
   membreDepuis: '05 JUIN 2022',
   powerLevel: 95,
   mrzLine: 'P<OTAKU<SAITAMA<<<<GENOS<<<0A9928102M1905051<<<JP<<<9',
+  qrUrl: 'https://otaku-agency.org',
 };
 
 export default function App() {

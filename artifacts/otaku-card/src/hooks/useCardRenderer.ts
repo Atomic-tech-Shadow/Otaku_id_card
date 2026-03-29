@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import QRCode from 'qrcode';
 import { FormData } from '../types';
 
 export function useCardRenderer(
@@ -139,16 +140,36 @@ export function useCardRenderer(
     drawHudField('CLASSE DE COMBAT', formData.classe, startX, 410);
     drawHudField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 490);
 
-    // --- QR CODE DESIGN ---
-    ctx.fillStyle = '#60a5fa';
-    ctx.globalAlpha = 0.2;
-    ctx.fillRect(830, 430, 130, 130);
-    ctx.globalAlpha = 1.0;
+    // --- QR CODE RÉEL ---
+    const qrX = 830, qrY = 430, qrSize = 130;
+
+    // Fond + bordure pendant le chargement
+    ctx.fillStyle = '#0a0f1e';
+    ctx.fillRect(qrX, qrY, qrSize, qrSize);
     ctx.strokeStyle = '#60a5fa';
-    ctx.strokeRect(830, 430, 130, 130);
-    ctx.fillStyle = '#fff';
-    ctx.font = '12px monospace';
-    ctx.fillText('DECRYPTING...', 845, 500);
+    ctx.lineWidth = 2;
+    ctx.strokeRect(qrX, qrY, qrSize, qrSize);
+
+    // Génération QR asynchrone
+    const urlToEncode = formData.qrUrl || 'https://otaku-agency.org';
+    QRCode.toDataURL(urlToEncode, {
+      width: qrSize,
+      margin: 1,
+      color: { dark: '#60a5fa', light: '#0a0f1e' },
+    }).then((dataUrl) => {
+      const qrImg = new Image();
+      qrImg.onload = () => {
+        ctx.drawImage(qrImg, qrX, qrY, qrSize, qrSize);
+        ctx.strokeStyle = '#60a5fa';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(qrX, qrY, qrSize, qrSize);
+      };
+      qrImg.src = dataUrl;
+    }).catch(() => {
+      ctx.fillStyle = '#f43f5e';
+      ctx.font = '10px monospace';
+      ctx.fillText('URL INVALIDE', qrX + 10, qrY + 65);
+    });
 
     // --- MRZ ZONE ---
     ctx.fillStyle = 'rgba(0,0,0,0.5)';

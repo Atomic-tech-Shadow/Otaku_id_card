@@ -11,4 +11,5 @@ export interface FormData {
   membreDepuis: string;
   powerLevel: number;
   mrzLine: string;
+  qrUrl: string;
 }
