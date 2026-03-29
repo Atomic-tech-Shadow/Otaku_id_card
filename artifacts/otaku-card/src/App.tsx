@@ -116,6 +116,9 @@ export default function App() {
           <span className="hidden sm:inline">DOMAINE: SECURE-NET</span>
           <span className="text-[#b91c1c]">RESTRICTED ACCESS</span>
         </div>
+        <div className="text-slate-600">
+          CONÇU PAR <span className="text-[#d4af37] tracking-widest">DEV CID</span>
+        </div>
       </footer>
     </div>
   );
