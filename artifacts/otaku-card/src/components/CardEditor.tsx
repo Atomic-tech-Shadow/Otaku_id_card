@@ -36,7 +36,7 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
             name={name}
             value={value}
             onChange={onChange}
-            className="oia-input w-full p-2.5 pl-16 text-sm font-mono uppercase appearance-none"
+            className="oia-input w-full p-2.5 pl-12 sm:pl-16 text-sm font-mono uppercase appearance-none touch-manipulation"
           >
             {options.map((opt: string) => <option key={opt} value={opt}>{opt}</option>)}
           </select>
@@ -46,7 +46,7 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
             name={name}
             value={value}
             onChange={onChange}
-            className="oia-input w-full p-2.5 pl-16 text-sm font-mono uppercase"
+            className="oia-input w-full p-2.5 pl-12 sm:pl-16 text-sm font-mono uppercase touch-manipulation"
           />
         )}
       </div>
@@ -54,26 +54,26 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
   );
 
   return (
-    <div className="lg:col-span-5 flex flex-col h-full gap-6">
-      <div className="oia-panel p-6 flex-grow flex flex-col gap-6">
-        <div className="flex items-center justify-between border-b border-slate-700 pb-4">
-          <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2 uppercase tracking-widest">
-            <FileText className="w-5 h-5 text-[#d4af37]" /> DOSSIER D'ENREGISTREMENT
+    <div className="flex flex-col gap-4">
+      <div className="oia-panel p-4 sm:p-6 flex flex-col gap-5">
+        <div className="flex items-center justify-between border-b border-slate-700 pb-3">
+          <h2 className="text-base sm:text-lg font-bold text-slate-100 flex items-center gap-2 uppercase tracking-widest">
+            <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-[#d4af37]" /> DOSSIER D'ENREGISTREMENT
           </h2>
-          <div className="text-[10px] bg-slate-800 text-slate-300 font-mono px-2 py-1 rounded-sm border border-slate-700">
+          <div className="text-[10px] bg-slate-800 text-slate-300 font-mono px-2 py-1 rounded-sm border border-slate-700 shrink-0">
             FORM-ID: 72-A
           </div>
         </div>
 
-        <div className="space-y-8 flex-grow overflow-y-auto pr-2 custom-scrollbar">
+        <div className="space-y-6">
           
           {/* Identity Section */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs text-[#d4af37] uppercase font-bold tracking-widest border-b border-slate-800 pb-2">
               <Database className="w-3.5 h-3.5" /> DONNÉES D'IDENTITÉ
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <InputField label="Nom de famille" code="F01" name="nom" value={formData.nom} />
               <InputField label="Prénom" code="F02" name="prenom" value={formData.prenom} />
             </div>
@@ -82,14 +82,14 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
           </div>
 
           {/* Combat Stats Section */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs text-[#d4af37] uppercase font-bold tracking-widest border-b border-slate-800 pb-2">
               <Shield className="w-3.5 h-3.5" /> PROFIL TACTIQUE
             </div>
 
             <InputField label="Expertise / Pouvoirs" code="T01" name="expertise" value={formData.expertise} />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <InputField 
                 label="Classification" 
                 code="T02" 
@@ -103,18 +103,18 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
           </div>
 
           {/* Biometrics */}
-          <div className="space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs text-[#d4af37] uppercase font-bold tracking-widest border-b border-slate-800 pb-2">
               <Camera className="w-3.5 h-3.5" /> BIOMÉTRIE
             </div>
             
-            <label className="relative flex w-full cursor-pointer bg-[#0a0f1e] border border-slate-700 border-dashed p-4 items-center justify-center gap-3 transition-all hover:border-slate-500 hover:bg-slate-800/50">
-              <Camera className="w-5 h-5 text-slate-400" />
+            <label className="relative flex w-full cursor-pointer bg-[#0a0f1e] border border-slate-700 border-dashed p-4 items-center justify-center gap-3 transition-all hover:border-slate-500 hover:bg-slate-800/50 touch-manipulation">
+              <Camera className="w-5 h-5 text-slate-400 shrink-0" />
               <div className="flex flex-col items-start">
                 <span className="text-sm font-bold uppercase tracking-widest text-slate-300">SOUMETTRE PORTRAIT</span>
                 <span className="text-[9px] font-mono text-slate-500">FORMAT: JPG/PNG (RATIO 3:4 RECOMMANDÉ)</span>
               </div>
-              <input type="file" className="hidden" onChange={handleFileChange} />
+              <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
             </label>
           </div>
         </div>

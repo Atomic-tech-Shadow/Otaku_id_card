@@ -3,7 +3,7 @@ import { Activity, Server, ShieldCheck, FileCheck } from 'lucide-react';
 
 export function StatsBar() {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full font-mono">
+    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full font-mono">
       <div className="oia-panel p-4 flex flex-col gap-2 relative overflow-hidden group border-t-0 border-l-0 border-r-0 border-b-2 border-[#10b981]">
         <div className="flex items-center gap-2 text-slate-400">
           <Activity className="w-4 h-4" />

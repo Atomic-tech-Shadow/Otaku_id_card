@@ -24,34 +24,33 @@ export function CardPreview({ canvasRef }: CardPreviewProps) {
         </div>
 
         {/* Canvas wrapper */}
-        <div className="flex-grow p-4 md:p-8 flex items-center justify-center bg-[#0d1222] relative overflow-hidden">
-          {/* subtle grid background for the holding area */}
+        <div className="p-3 sm:p-6 flex items-center justify-center bg-[#0d1222] relative overflow-hidden">
+          {/* subtle grid background */}
           <div className="absolute inset-0 opacity-10" style={{
             backgroundImage: `linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)`,
             backgroundSize: `20px 20px`
           }}></div>
           
-          <div className="relative group w-full max-w-[800px] mx-auto flex justify-center">
-            {/* The secure document holder aesthetic */}
-            <div className="relative p-2 bg-slate-800 rounded-sm shadow-2xl border border-slate-700">
+          <div className="relative w-full mx-auto">
+            {/* Secure document holder */}
+            <div className="relative p-1.5 sm:p-2 bg-slate-800 rounded-sm shadow-2xl border border-slate-700">
               {/* Corner clips */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-slate-400"></div>
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-slate-400"></div>
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-slate-400"></div>
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-slate-400"></div>
+              <div className="absolute top-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-l-2 border-slate-400"></div>
+              <div className="absolute top-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-r-2 border-slate-400"></div>
+              <div className="absolute bottom-0 left-0 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-l-2 border-slate-400"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-r-2 border-slate-400"></div>
 
-              <div className="bg-black relative shadow-inner">
+              <div className="bg-black relative shadow-inner overflow-hidden">
                 <canvas
                   ref={canvasRef}
                   width={1011}
                   height={638}
-                  className="w-full h-auto block rounded-sm"
-                  style={{ maxWidth: '100%', objectFit: 'contain' }}
+                  className="block w-full h-auto"
+                  style={{ display: 'block' }}
                 />
-                
-                {/* Protective watermark overlay */}
-                <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-10 flex items-center justify-center">
-                  <span className="text-white text-6xl font-black uppercase tracking-widest rotate-[-30deg]">O.I.A. SECURE</span>
+                {/* Watermark */}
+                <div className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-10 flex items-center justify-center overflow-hidden">
+                  <span className="text-white text-4xl sm:text-6xl font-black uppercase tracking-widest rotate-[-30deg] whitespace-nowrap">O.I.A. SECURE</span>
                 </div>
               </div>
             </div>
