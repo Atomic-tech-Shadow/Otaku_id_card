@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Otaku ID Card Generator"
+version = "1.0.0"
+id = "artifacts/otaku-card"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19184
+
+[services.development]
+run = "pnpm --filter @workspace/otaku-card run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/otaku-card", "run", "build" ]
+publicDir = "artifacts/otaku-card/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19184"
+BASE_PATH = "/"

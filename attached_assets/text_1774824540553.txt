@@ -1,0 +1,297 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { Camera, Download, ShieldCheck, User, Zap, Star, Activity, Binary } from 'lucide-react';
+
+const App = () => {
+  const canvasRef = useRef(null);
+  const [formData, setFormData] = useState({
+    nom: 'SAITAMA',
+    prenom: 'GENOS',
+    dateNaissance: '19 MAI 2005',
+    sexe: 'M',
+    nationalite: 'JAPONAISE',
+    noCarte: 'OA-JP-9928102',
+    dateExpiration: '31 DÉC 2030',
+    classe: 'S-CLASS',
+    expertise: 'CYBORG, INCINÉRATION',
+    membreDepuis: '05 JUIN 2022',
+    powerLevel: 95,
+    mrzLine: 'P<OTAKU<SAITAMA<<<<GENOS<<<0A9928102M1905051<<<JP<<<9'
+  });
+
+  const [photo, setPhoto] = useState(null);
+
+  const renderCard = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // --- FOND STYLE CYBER/ANIME ---
+    // Dégradé de base sombre et profond
+    const bgGradient = ctx.createLinearGradient(0, 0, w, h);
+    bgGradient.addColorStop(0, '#0f172a');
+    bgGradient.addColorStop(1, '#1e1b4b');
+    ctx.fillStyle = bgGradient;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, w, h, 25);
+    ctx.fill();
+
+    // Ajout de trame de points (Halftone manga style)
+    ctx.globalAlpha = 0.05;
+    ctx.fillStyle = '#ffffff';
+    for (let i = 0; i < w; i += 15) {
+      for (let j = 0; j < h; j += 15) {
+        ctx.beginPath();
+        ctx.arc(i, j, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1.0;
+
+    // --- DÉCORATIONS ET LIGNES DE FORCE ---
+    ctx.strokeStyle = '#3b82f6';
+    ctx.lineWidth = 2;
+    
+    // Bordure stylisée interne
+    ctx.beginPath();
+    ctx.moveTo(50, 100);
+    ctx.lineTo(w - 50, 100);
+    ctx.stroke();
+
+    // Formes géométriques décoratives (coins)
+    ctx.fillStyle = '#3b82f6';
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(150, 0);
+    ctx.lineTo(0, 150);
+    ctx.fill();
+    
+    // Triangle opposé
+    ctx.beginPath();
+    ctx.moveTo(w, h);
+    ctx.lineTo(w - 150, h);
+    ctx.lineTo(w, h - 150);
+    ctx.fill();
+
+    // --- TITRE STYLE MECHA ---
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = '#60a5fa';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 48px "Impact", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText("OTAKU IDENTIFICATION CARD", w / 2, 70);
+    ctx.shadowBlur = 0;
+
+    // --- ZONE PHOTO AVEC OVERLAY ---
+    const photoX = 70;
+    const photoY = 140;
+    const photoW = 260;
+    const photoH = 340;
+
+    // Fond zone photo
+    ctx.fillStyle = '#000';
+    ctx.fillRect(photoX, photoY, photoW, photoH);
+    
+    if (photo) {
+      const img = new Image();
+      img.src = photo;
+      img.onload = () => {
+        ctx.drawImage(img, photoX, photoY, photoW, photoH);
+        // Overlay "Targeting"
+        ctx.strokeStyle = '#3b82f6';
+        ctx.lineWidth = 4;
+        // Coins de viseur
+        const len = 30;
+        ctx.beginPath();
+        ctx.moveTo(photoX, photoY + len); ctx.lineTo(photoX, photoY); ctx.lineTo(photoX + len, photoY);
+        ctx.moveTo(photoX + photoW - len, photoY); ctx.lineTo(photoX + photoW, photoY); ctx.lineTo(photoX + photoW, photoY + len);
+        ctx.moveTo(photoX, photoY + photoH - len); ctx.lineTo(photoX, photoY + photoH); ctx.lineTo(photoX + len, photoY + photoH);
+        ctx.moveTo(photoX + photoW - len, photoY + photoH); ctx.lineTo(photoX + photoW, photoY + photoH); ctx.lineTo(photoX + photoW, photoY + photoH - len);
+        ctx.stroke();
+      };
+    }
+
+    // --- CHAMPS DE DONNÉES STYLE HUD ---
+    ctx.textAlign = 'left';
+    const startX = 380;
+    
+    const drawHudField = (label, value, x, y) => {
+      ctx.font = 'bold 16px monospace';
+      ctx.fillStyle = '#60a5fa';
+      ctx.fillText(`[ ${label} ]`, x, y);
+      ctx.font = 'bold 28px sans-serif';
+      ctx.fillStyle = '#fff';
+      ctx.fillText(value.toUpperCase(), x, y + 35);
+    };
+
+    drawHudField("IDENTITÉ", `${formData.nom} ${formData.prenom}`, startX, 170);
+    drawHudField("ORIGINE", formData.nationalite, startX, 250);
+    drawHudField("NO. DE SÉRIE", formData.noCarte, startX + 300, 250);
+    
+    // Barre de puissance (Power Level)
+    ctx.font = 'bold 16px monospace';
+    ctx.fillStyle = '#60a5fa';
+    ctx.fillText("[ NIVEAU DE PUISSANCE ]", startX, 330);
+    
+    const barWidth = 550;
+    ctx.fillStyle = '#1e293b';
+    ctx.roundRect(startX, 345, barWidth, 15, 5);
+    ctx.fill();
+    
+    const grad = ctx.createLinearGradient(startX, 0, startX + barWidth, 0);
+    grad.addColorStop(0, '#3b82f6');
+    grad.addColorStop(1, '#f43f5e');
+    ctx.fillStyle = grad;
+    ctx.roundRect(startX, 345, (barWidth * formData.powerLevel) / 100, 15, 5);
+    ctx.fill();
+
+    // Spécialisations
+    drawHudField("CLASSE DE COMBAT", formData.classe, startX, 410);
+    drawHudField("CAPACITÉS SPÉCIALES", formData.expertise, startX, 490);
+
+    // --- QR CODE DESIGN ---
+    ctx.fillStyle = '#60a5fa';
+    ctx.globalAlpha = 0.2;
+    ctx.fillRect(830, 430, 130, 130);
+    ctx.globalAlpha = 1.0;
+    ctx.strokeStyle = '#60a5fa';
+    ctx.strokeRect(830, 430, 130, 130);
+    ctx.fillStyle = '#fff';
+    ctx.font = '12px monospace';
+    ctx.fillText("DECRYPTING...", 845, 500);
+
+    // --- MRZ ZONE ---
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillRect(40, 570, w - 80, 50);
+    ctx.fillStyle = '#fff';
+    ctx.font = '22px "Courier New", monospace';
+    ctx.fillText(formData.mrzLine, 60, 602);
+  };
+
+  useEffect(() => {
+    renderCard();
+  }, [formData, photo]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const download = () => {
+    const link = document.createElement('a');
+    link.download = `otaku-card-${formData.nom}.png`;
+    link.href = canvasRef.current.toDataURL();
+    link.click();
+  };
+
+  return (
+    <div className="min-h-screen bg-black text-slate-200 p-4 font-sans">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-12 gap-8">
+        
+        {/* Panneau de gauche - Formulaire */}
+        <div className="lg:col-span-4 space-y-4">
+          <div className="bg-slate-900 border border-blue-900/50 p-6 rounded-2xl shadow-blue-900/20 shadow-lg">
+            <h2 className="text-xl font-black mb-6 text-blue-400 flex items-center gap-2 uppercase tracking-tighter">
+              <Zap className="fill-current" /> Éditeur d'Agent
+            </h2>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1">Nom Complet</label>
+                <div className="flex gap-2">
+                  <input name="nom" placeholder="Nom" value={formData.nom} onChange={handleInputChange} className="w-1/2 bg-black border border-slate-800 rounded-lg p-2 text-sm outline-none focus:border-blue-500" />
+                  <input name="prenom" placeholder="Prénom" value={formData.prenom} onChange={handleInputChange} className="w-1/2 bg-black border border-slate-800 rounded-lg p-2 text-sm outline-none focus:border-blue-500" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1">Expertise / Pouvoirs</label>
+                <input name="expertise" value={formData.expertise} onChange={handleInputChange} className="w-full bg-black border border-slate-800 rounded-lg p-2 text-sm outline-none focus:border-blue-500" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1">Classe</label>
+                  <select name="classe" value={formData.classe} onChange={handleInputChange} className="w-full bg-black border border-slate-800 rounded-lg p-2 text-sm outline-none">
+                    <option>S-CLASS</option>
+                    <option>A-CLASS</option>
+                    <option>B-CLASS</option>
+                    <option>GOD TIER</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1">Niveau (0-100)</label>
+                  <input type="number" name="powerLevel" value={formData.powerLevel} onChange={handleInputChange} className="w-full bg-black border border-slate-800 rounded-lg p-2 text-sm outline-none" />
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-800">
+                 <label className="flex w-full cursor-pointer bg-blue-900/30 hover:bg-blue-800/40 border border-blue-500/50 p-3 rounded-xl items-center justify-center gap-2 transition-all group">
+                    <Camera className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-bold uppercase">Scanner Portrait</span>
+                    <input type="file" className="hidden" onChange={(e) => {
+                      const file = e.target.files[0];
+                      if(file) {
+                        const reader = new FileReader();
+                        reader.onload = (ev) => setPhoto(ev.target.result);
+                        reader.readAsDataURL(file);
+                      }
+                    }} />
+                  </label>
+              </div>
+            </div>
+          </div>
+
+          <button onClick={download} className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-2xl shadow-lg shadow-blue-600/20 flex items-center justify-center gap-3 transition-all active:scale-95">
+            <Download /> GÉNÉRER LA CARTE
+          </button>
+        </div>
+
+        {/* Panneau de droite - Visualisation */}
+        <div className="lg:col-span-8 flex flex-col items-center">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+            <div className="relative bg-black rounded-3xl p-2 border border-slate-800">
+              <canvas 
+                ref={canvasRef} 
+                width={1011} 
+                height={638} 
+                className="w-full h-auto rounded-2xl shadow-2xl"
+                style={{ maxWidth: '100%' }}
+              />
+            </div>
+          </div>
+
+          <div className="mt-8 grid grid-cols-3 gap-4 w-full">
+            <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-xl flex items-center gap-3">
+              <Binary className="text-blue-500" />
+              <div>
+                <div className="text-[10px] text-slate-500 uppercase font-bold">Encodage</div>
+                <div className="text-sm font-mono tracking-tighter">HEX-721-OTK</div>
+              </div>
+            </div>
+            <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-xl flex items-center gap-3">
+              <Activity className="text-green-500" />
+              <div>
+                <div className="text-[10px] text-slate-500 uppercase font-bold">Statut</div>
+                <div className="text-sm font-mono tracking-tighter text-green-400 font-bold">ACTIF</div>
+              </div>
+            </div>
+            <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-xl flex items-center gap-3">
+              <Star className="text-yellow-500" />
+              <div>
+                <div className="text-[10px] text-slate-500 uppercase font-bold">Rang</div>
+                <div className="text-sm font-mono tracking-tighter">ÉLITE UNIVERSELLE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+
