@@ -31,7 +31,7 @@ export default function App() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'powerLevel' ? Number(value) : value,
+      [name]: name === 'powerLevel' ? (parseInt(value, 10) || 0) : value,
     }));
   };
 

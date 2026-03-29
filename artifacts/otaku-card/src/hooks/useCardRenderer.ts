@@ -119,16 +119,22 @@ export function useCardRenderer(
     ctx.fillText('[ NIVEAU DE PUISSANCE ]', startX, 330);
 
     const barWidth = 550;
+    const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
+
+    ctx.beginPath();
     ctx.fillStyle = '#1e293b';
     ctx.roundRect(startX, 345, barWidth, 15, 5);
     ctx.fill();
 
-    const grad = ctx.createLinearGradient(startX, 0, startX + barWidth, 0);
-    grad.addColorStop(0, '#3b82f6');
-    grad.addColorStop(1, '#f43f5e');
-    ctx.fillStyle = grad;
-    ctx.roundRect(startX, 345, (barWidth * formData.powerLevel) / 100, 15, 5);
-    ctx.fill();
+    if (power > 0) {
+      const grad = ctx.createLinearGradient(startX, 0, startX + barWidth, 0);
+      grad.addColorStop(0, '#3b82f6');
+      grad.addColorStop(1, '#f43f5e');
+      ctx.beginPath();
+      ctx.fillStyle = grad;
+      ctx.roundRect(startX, 345, (barWidth * power) / 100, 15, 5);
+      ctx.fill();
+    }
 
     drawHudField('CLASSE DE COMBAT', formData.classe, startX, 410);
     drawHudField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 490);

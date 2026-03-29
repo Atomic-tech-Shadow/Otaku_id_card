@@ -8,13 +8,15 @@ interface InputFieldProps {
   name: string;
   value: string | number;
   type?: string;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode'];
+  pattern?: string;
   required?: boolean;
   isSelect?: boolean;
   options?: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
-function InputField({ label, code, name, value, type = 'text', required = true, isSelect = false, options = [], onChange }: InputFieldProps) {
+function InputField({ label, code, name, value, type = 'text', inputMode, pattern, required = true, isSelect = false, options = [], onChange }: InputFieldProps) {
   return (
     <div className="group flex flex-col gap-1.5">
       <div className="flex justify-between items-end">
@@ -37,6 +39,8 @@ function InputField({ label, code, name, value, type = 'text', required = true, 
         ) : (
           <input
             type={type}
+            inputMode={inputMode}
+            pattern={pattern}
             name={name}
             value={value}
             onChange={onChange}
@@ -113,7 +117,7 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
                 options={['S-CLASS', 'A-CLASS', 'B-CLASS', 'GOD TIER', 'CIVILIAN']}
                 onChange={onChange}
               />
-              <InputField label="Niveau (0-100)" code="T03" name="powerLevel" type="number" value={formData.powerLevel} onChange={onChange} />
+              <InputField label="Niveau (0-100)" code="T03" name="powerLevel" type="text" inputMode="numeric" pattern="[0-9]*" value={formData.powerLevel} onChange={onChange} />
             </div>
           </div>
 
