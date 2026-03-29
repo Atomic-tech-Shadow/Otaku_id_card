@@ -55,9 +55,15 @@ export default function App() {
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <img src={oiaLogo} alt="O.I.A. Logo" className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 drop-shadow-lg" />
           <div className="flex flex-col min-w-0">
-            <span className="text-base sm:text-xl font-bold tracking-widest text-slate-100">
-              O.I.A.
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-base sm:text-xl font-bold tracking-widest text-slate-100">
+                O.I.A.
+              </span>
+              <div className="flex items-center gap-1 bg-[#1a1400]/60 border border-[#d4af37]/40 px-1.5 py-0.5 rounded-sm shadow-[0_0_8px_rgba(212,175,55,0.15)] animate-slow-pulse">
+                <BadgeCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#d4af37] shrink-0" strokeWidth={1.5} />
+                <span className="text-[7px] sm:text-[8px] font-mono font-black tracking-widest text-[#d4af37] uppercase hidden sm:block whitespace-nowrap">ACCRÉDITÉ ALPHA</span>
+              </div>
+            </div>
             <span className="text-[8px] sm:text-[9px] font-medium tracking-[0.15em] sm:tracking-[0.2em] text-slate-500 uppercase truncate">
               Otaku International Agency
             </span>
@@ -71,17 +77,6 @@ export default function App() {
           <a href="#" className="hover:text-slate-100 transition-colors">CONTACT</a>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-2.5 bg-[#1a1400]/60 border border-[#d4af37]/40 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-sm animate-slow-pulse shrink-0 shadow-[0_0_12px_rgba(212,175,55,0.15)]">
-          <BadgeCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#d4af37] shrink-0" strokeWidth={1.5} />
-          <div className="flex flex-col leading-none">
-            <span className="text-[8px] sm:text-[9px] font-mono font-bold tracking-[0.2em] text-[#d4af37]/70 uppercase hidden sm:block">
-              Organisme Certifié
-            </span>
-            <span className="text-[9px] sm:text-[10px] font-mono font-black tracking-widest text-[#d4af37] uppercase whitespace-nowrap">
-              ACCRÉDITÉ ALPHA
-            </span>
-          </div>
-        </div>
       </nav>
 
       <main className="flex-grow relative z-10 w-full max-w-[1400px] mx-auto px-3 sm:px-6 py-6 flex flex-col gap-6">
