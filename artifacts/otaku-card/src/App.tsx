@@ -59,10 +59,7 @@ export default function App() {
               <span className="text-base sm:text-xl font-bold tracking-widest text-slate-100">
                 O.I.A.
               </span>
-              <div className="flex items-center gap-1 bg-[#1a1400]/60 border border-[#d4af37]/40 px-1.5 py-0.5 rounded-sm shadow-[0_0_8px_rgba(212,175,55,0.15)] animate-slow-pulse">
-                <BadgeCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#d4af37] shrink-0" strokeWidth={1.5} />
-                <span className="text-[7px] sm:text-[8px] font-mono font-black tracking-widest text-[#d4af37] uppercase hidden sm:block whitespace-nowrap">ACCRÉDITÉ ALPHA</span>
-              </div>
+              <BadgeCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3b82f6] shrink-0" strokeWidth={1.5} />
             </div>
             <span className="text-[8px] sm:text-[9px] font-medium tracking-[0.15em] sm:tracking-[0.2em] text-slate-500 uppercase truncate">
               Otaku International Agency
