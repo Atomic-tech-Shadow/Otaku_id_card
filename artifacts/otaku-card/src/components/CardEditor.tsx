@@ -152,7 +152,9 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload, onTe
               <InputField label="Prénom" code="F02" name="prenom" value={formData.prenom} onChange={onChange} />
             </div>
 
-            <InputField label="Nationalité" code="F03" name="nationalite" value={formData.nationalite} onChange={onChange} />
+            <InputField label="Pseudo / Alias" code="F03" name="pseudo" value={formData.pseudo} onChange={onChange} />
+
+            <InputField label="Nationalité" code="F04" name="nationalite" value={formData.nationalite} onChange={onChange} />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <InputField label="Date de naissance" code="F04" name="dateNaissance" value={formData.dateNaissance} onChange={onChange} />

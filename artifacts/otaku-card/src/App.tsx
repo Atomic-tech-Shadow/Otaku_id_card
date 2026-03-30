@@ -9,6 +9,7 @@ import oiaLogo from './assets/oia-logo.svg';
 const DEFAULT_FORM_DATA: FormData = {
   nom: 'SAITAMA',
   prenom: 'GENOS',
+  pseudo: 'CYBORG HERO',
   dateNaissance: '19 MAI 2005',
   sexe: 'M',
   nationalite: 'JAPONAISE',
