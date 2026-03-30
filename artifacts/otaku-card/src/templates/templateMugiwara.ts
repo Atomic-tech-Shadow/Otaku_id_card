@@ -414,5 +414,5 @@ export function renderMugiwara(
   ctx.fillStyle = '#fbbf24';
   ctx.font = '19px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine, 60, 604);
+  ctx.fillText(mrzLine, 44, 604);
 }

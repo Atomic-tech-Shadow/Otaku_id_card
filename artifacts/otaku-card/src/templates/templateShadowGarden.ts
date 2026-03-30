@@ -339,5 +339,5 @@ export function renderShadowGarden(
   ctx.fillStyle = '#B0B0C8';
   ctx.font = '18px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine, 60, 604);
+  ctx.fillText(mrzLine, 44, 604);
 }

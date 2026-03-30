@@ -174,5 +174,5 @@ export function renderOIA(
   ctx.fillStyle = '#fff';
   ctx.font = '22px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine, 60, 602);
+  ctx.fillText(mrzLine, 44, 602);
 }

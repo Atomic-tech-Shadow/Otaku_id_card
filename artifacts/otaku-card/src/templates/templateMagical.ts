@@ -228,5 +228,5 @@ export function renderMagical(
   ctx.fillStyle = '#a855f7';
   ctx.font = '19px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine, 60, 604);
+  ctx.fillText(mrzLine, 44, 604);
 }
