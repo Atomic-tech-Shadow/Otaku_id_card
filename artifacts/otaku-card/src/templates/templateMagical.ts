@@ -148,20 +148,21 @@ export function renderMagical(
     ctx.shadowBlur = 0;
   };
 
-  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 152);
-  drawField('NATIONALITÉ', formData.nationalite, startX, 228);
-  drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 18);
+  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 143);
+  drawField('PSEUDO', formData.pseudo, startX, 203);
+  drawField('NATIONALITÉ', formData.nationalite, startX, 260);
+  drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 260, 18);
 
   ctx.font = 'bold 12px monospace';
   ctx.fillStyle = '#a855f7';
-  ctx.fillText('✦ NIVEAU DE PUISSANCE', startX, 308);
+  ctx.fillText('✦ NIVEAU DE PUISSANCE', startX, 318);
 
   const barWidth = 558;
   const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
 
   ctx.fillStyle = '#0d0018';
   ctx.beginPath();
-  ctx.roundRect(startX, 318, barWidth, 16, 8);
+  ctx.roundRect(startX, 328, barWidth, 16, 8);
   ctx.fill();
 
   if (power > 0) {
@@ -173,13 +174,13 @@ export function renderMagical(
     ctx.fillStyle = grad;
     ctx.shadowBlur = 12;
     ctx.shadowColor = '#ec4899';
-    ctx.roundRect(startX, 318, (barWidth * power) / 100, 16, 8);
+    ctx.roundRect(startX, 328, (barWidth * power) / 100, 16, 8);
     ctx.fill();
     ctx.shadowBlur = 0;
   }
 
-  drawField('CLASSE DE COMBAT', formData.classe, startX, 383);
-  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 458, 22);
+  drawField('CLASSE DE COMBAT', formData.classe, startX, 384);
+  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 455, 22);
 
   const qrX = 838, qrY = 445, qrSize = 118;
   ctx.fillStyle = '#0d0015';

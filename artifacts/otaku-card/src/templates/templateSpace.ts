@@ -153,20 +153,21 @@ export function renderSpace(
     ctx.fillText(value.toUpperCase(), x, y + 24);
   };
 
-  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 148);
-  drawField('NATIONALITÉ', formData.nationalite, startX, 226);
-  drawFieldSmall('NO. DE SÉRIE', formData.noCarte, startX + 320, 226);
+  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 143);
+  drawField('PSEUDO', formData.pseudo, startX, 203);
+  drawField('NATIONALITÉ', formData.nationalite, startX, 263);
+  drawFieldSmall('NO. DE SÉRIE', formData.noCarte, startX + 320, 263);
 
   ctx.font = '11px monospace';
   ctx.fillStyle = '#0d9488';
-  ctx.fillText('NIVEAU DE PUISSANCE', startX, 305);
+  ctx.fillText('NIVEAU DE PUISSANCE', startX, 322);
 
   const barWidth = 558;
   const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
 
   ctx.fillStyle = '#0a1a1a';
   ctx.beginPath();
-  ctx.roundRect(startX, 313, barWidth, 14, 2);
+  ctx.roundRect(startX, 330, barWidth, 14, 2);
   ctx.fill();
 
   if (power > 0) {
@@ -178,7 +179,7 @@ export function renderSpace(
     ctx.fillStyle = grad;
     ctx.shadowBlur = 8;
     ctx.shadowColor = '#06b6d4';
-    ctx.roundRect(startX, 313, (barWidth * power) / 100, 14, 2);
+    ctx.roundRect(startX, 330, (barWidth * power) / 100, 14, 2);
     ctx.fill();
     ctx.shadowBlur = 0;
   }
@@ -186,10 +187,10 @@ export function renderSpace(
   ctx.font = 'bold 11px monospace';
   ctx.fillStyle = '#06b6d4';
   ctx.textAlign = 'right';
-  ctx.fillText(`${power}%`, startX + barWidth, 311);
+  ctx.fillText(`${power}%`, startX + barWidth, 328);
   ctx.textAlign = 'left';
 
-  drawField('CLASSE DE COMBAT', formData.classe, startX, 378);
+  drawField('CLASSE DE COMBAT', formData.classe, startX, 384);
   drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 452, 22);
 
   const qrX = 840, qrY = 445, qrSize = 118;

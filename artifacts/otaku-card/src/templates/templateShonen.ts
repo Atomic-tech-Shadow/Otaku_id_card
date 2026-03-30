@@ -124,20 +124,21 @@ export function renderShonen(
     ctx.shadowBlur = 0;
   };
 
-  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 152);
-  drawField('NATIONALITÉ', formData.nationalite, startX, 228);
-  drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 19);
+  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 143);
+  drawField('PSEUDO', formData.pseudo, startX, 203);
+  drawField('NATIONALITÉ', formData.nationalite, startX, 260);
+  drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 260, 19);
 
   ctx.font = 'bold 13px monospace';
   ctx.fillStyle = '#f97316';
-  ctx.fillText('▸ NIVEAU DE PUISSANCE', startX, 308);
+  ctx.fillText('▸ NIVEAU DE PUISSANCE', startX, 318);
 
   const barWidth = 558;
   const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
 
   ctx.fillStyle = '#1a0800';
   ctx.beginPath();
-  ctx.roundRect(startX, 318, barWidth, 18, 4);
+  ctx.roundRect(startX, 328, barWidth, 18, 4);
   ctx.fill();
 
   if (power > 0) {
@@ -149,7 +150,7 @@ export function renderShonen(
     ctx.fillStyle = grad;
     ctx.shadowBlur = 14;
     ctx.shadowColor = '#f97316';
-    ctx.roundRect(startX, 318, (barWidth * power) / 100, 18, 4);
+    ctx.roundRect(startX, 328, (barWidth * power) / 100, 18, 4);
     ctx.fill();
     ctx.shadowBlur = 0;
   }
@@ -157,11 +158,11 @@ export function renderShonen(
   ctx.font = 'bold 13px monospace';
   ctx.fillStyle = '#fbbf24';
   ctx.textAlign = 'right';
-  ctx.fillText(`${power} / 100`, startX + barWidth, 315);
+  ctx.fillText(`${power} / 100`, startX + barWidth, 325);
   ctx.textAlign = 'left';
 
   drawField('CLASSE DE COMBAT', formData.classe, startX, 385);
-  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 460, 22);
+  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 455, 22);
 
   const qrX = 840, qrY = 445, qrSize = 118;
   ctx.fillStyle = '#0a0200';

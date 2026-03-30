@@ -96,20 +96,21 @@ export function renderOIA(
     ctx.fillText(value.toUpperCase(), x, y + 35);
   };
 
-  drawHudField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 170);
-  drawHudField('NATIONALITÉ', formData.nationalite, startX, 250);
-  drawHudField('NO. DE SÉRIE', formData.noCarte, startX + 300, 250);
+  drawHudField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 155);
+  drawHudField('PSEUDO', formData.pseudo, startX, 215);
+  drawHudField('NATIONALITÉ', formData.nationalite, startX, 278);
+  drawHudField('NO. DE SÉRIE', formData.noCarte, startX + 300, 278);
 
   ctx.font = 'bold 16px monospace';
   ctx.fillStyle = '#60a5fa';
-  ctx.fillText('[ NIVEAU DE PUISSANCE ]', startX, 330);
+  ctx.fillText('[ NIVEAU DE PUISSANCE ]', startX, 348);
 
   const barWidth = 550;
   const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
 
   ctx.beginPath();
   ctx.fillStyle = '#1e293b';
-  ctx.roundRect(startX, 345, barWidth, 15, 5);
+  ctx.roundRect(startX, 363, barWidth, 15, 5);
   ctx.fill();
 
   if (power > 0) {
@@ -118,12 +119,12 @@ export function renderOIA(
     grad.addColorStop(1, '#f43f5e');
     ctx.beginPath();
     ctx.fillStyle = grad;
-    ctx.roundRect(startX, 345, (barWidth * power) / 100, 15, 5);
+    ctx.roundRect(startX, 363, (barWidth * power) / 100, 15, 5);
     ctx.fill();
   }
 
-  drawHudField('CLASSE DE COMBAT', formData.classe, startX, 410);
-  drawHudField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 490);
+  drawHudField('CLASSE DE COMBAT', formData.classe, startX, 428);
+  drawHudField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 502);
 
   const qrX = 830, qrY = 430, qrSize = 130;
 
