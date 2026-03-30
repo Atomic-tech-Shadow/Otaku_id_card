@@ -233,17 +233,16 @@ export function renderSpace(
   drawMiniField('EXPIRATION', formData.dateExpiration, 70, 503);
   drawMiniField('MEMBRE DEP.', formData.membreDepuis, 215, 503);
 
-  const { line1: mrzLine1, line2: mrzLine2 } = generateMRZ(formData);
+  const { line2: mrzLine } = generateMRZ(formData);
   ctx.fillStyle = 'rgba(0,0,0,0.80)';
-  ctx.fillRect(40, 568, w - 80, 58);
+  ctx.fillRect(40, 577, w - 80, 43);
   ctx.strokeStyle = '#06b6d4';
   ctx.lineWidth = 0.5;
   ctx.globalAlpha = 0.5;
-  ctx.strokeRect(40, 568, w - 80, 58);
+  ctx.strokeRect(40, 577, w - 80, 43);
   ctx.globalAlpha = 1;
   ctx.fillStyle = '#06b6d4';
-  ctx.font = '15px "Courier New", monospace';
+  ctx.font = '18px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine1, 60, 588);
-  ctx.fillText(mrzLine2, 60, 609);
+  ctx.fillText(mrzLine, 60, 604);
 }

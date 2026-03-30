@@ -168,12 +168,11 @@ export function renderOIA(
   drawMiniField('[ EXPIRATION ]', formData.dateExpiration, 70, 533);
   drawMiniField('[ MEMBRE DEP. ]', formData.membreDepuis, 215, 533);
 
-  const { line1: mrzLine1, line2: mrzLine2 } = generateMRZ(formData);
+  const { line2: mrzLine } = generateMRZ(formData);
   ctx.fillStyle = 'rgba(0,0,0,0.5)';
-  ctx.fillRect(40, 563, w - 80, 62);
+  ctx.fillRect(40, 570, w - 80, 50);
   ctx.fillStyle = '#fff';
-  ctx.font = '15px "Courier New", monospace';
+  ctx.font = '22px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine1, 60, 583);
-  ctx.fillText(mrzLine2, 60, 607);
+  ctx.fillText(mrzLine, 60, 602);
 }

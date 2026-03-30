@@ -197,12 +197,11 @@ export function renderDemon(
   drawMiniField('⟦ EXPIRATION ⟧', formData.dateExpiration, 70, 513);
   drawMiniField('⟦ MEMBRE DEP. ⟧', formData.membreDepuis, 215, 513);
 
-  const { line1: mrzLine1, line2: mrzLine2 } = generateMRZ(formData);
+  const { line2: mrzLine } = generateMRZ(formData);
   ctx.fillStyle = 'rgba(0,0,0,0.70)';
-  ctx.fillRect(40, 568, w - 80, 58);
+  ctx.fillRect(40, 575, w - 80, 45);
   ctx.fillStyle = '#be123c';
-  ctx.font = '15px "Courier New", monospace';
+  ctx.font = '19px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine1, 60, 588);
-  ctx.fillText(mrzLine2, 60, 609);
+  ctx.fillText(mrzLine, 60, 604);
 }
