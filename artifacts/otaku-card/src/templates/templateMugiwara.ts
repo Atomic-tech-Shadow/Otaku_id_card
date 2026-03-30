@@ -1,5 +1,6 @@
 import QRCode from 'qrcode';
 import { FormData } from '../types';
+import { generateMRZ } from '../lib/mrz';
 
 export function renderMugiwara(
   ctx: CanvasRenderingContext2D,
@@ -402,15 +403,17 @@ export function renderMugiwara(
   drawMiniField('《 MEMBRE DEP. 》', formData.membreDepuis, 215, 513);
 
   // ── Bande MRZ ────────────────────────────────────────────
+  const { line1: mrzLine1, line2: mrzLine2 } = generateMRZ(formData);
   ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
-  ctx.fillRect(40, 575, w - 80, 45);
+  ctx.fillRect(40, 568, w - 80, 58);
   ctx.strokeStyle = '#6b1a1a';
   ctx.lineWidth = 1;
   ctx.globalAlpha = 0.55;
-  ctx.strokeRect(40, 575, w - 80, 45);
+  ctx.strokeRect(40, 568, w - 80, 58);
   ctx.globalAlpha = 1;
   ctx.fillStyle = '#fbbf24';
-  ctx.font = '19px "Courier New", monospace';
+  ctx.font = '15px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(formData.mrzLine, 60, 604);
+  ctx.fillText(mrzLine1, 60, 588);
+  ctx.fillText(mrzLine2, 60, 609);
 }

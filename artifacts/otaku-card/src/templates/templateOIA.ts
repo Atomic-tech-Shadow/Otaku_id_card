@@ -1,5 +1,6 @@
 import QRCode from 'qrcode';
 import { FormData } from '../types';
+import { generateMRZ } from '../lib/mrz';
 
 export function renderOIA(
   ctx: CanvasRenderingContext2D,
@@ -167,10 +168,12 @@ export function renderOIA(
   drawMiniField('[ EXPIRATION ]', formData.dateExpiration, 70, 533);
   drawMiniField('[ MEMBRE DEP. ]', formData.membreDepuis, 215, 533);
 
+  const { line1: mrzLine1, line2: mrzLine2 } = generateMRZ(formData);
   ctx.fillStyle = 'rgba(0,0,0,0.5)';
-  ctx.fillRect(40, 570, w - 80, 50);
+  ctx.fillRect(40, 563, w - 80, 62);
   ctx.fillStyle = '#fff';
-  ctx.font = '22px "Courier New", monospace';
+  ctx.font = '15px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(formData.mrzLine, 60, 602);
+  ctx.fillText(mrzLine1, 60, 583);
+  ctx.fillText(mrzLine2, 60, 607);
 }

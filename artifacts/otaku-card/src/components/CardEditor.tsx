@@ -202,7 +202,6 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload, onTe
               <InputField label="Membre depuis" code="C03" name="membreDepuis" value={formData.membreDepuis} onChange={onChange} />
             </div>
 
-            <InputField label="Ligne MRZ" code="C04" name="mrzLine" value={formData.mrzLine} onChange={onChange} />
           </div>
 
           {/* Combat Stats Section */}

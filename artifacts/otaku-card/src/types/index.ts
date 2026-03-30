@@ -13,7 +13,6 @@ export interface FormData {
   expertise: string;
   membreDepuis: string;
   powerLevel: number;
-  mrzLine: string;
   qrUrl: string;
   template: TemplateId;
 }
