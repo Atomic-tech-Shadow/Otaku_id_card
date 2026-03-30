@@ -235,7 +235,7 @@ export function renderShadowGarden(
     ctx.fillText(value.toUpperCase(), x, y + 25);
   };
 
-  drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 150);
+  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 150);
   drawField('ORIGINE', formData.nationalite, startX, 228);
   drawFieldSmall('NO. DE SÉRIE', formData.noCarte, startX + 315, 228);
 

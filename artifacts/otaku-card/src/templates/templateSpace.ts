@@ -153,7 +153,7 @@ export function renderSpace(
     ctx.fillText(value.toUpperCase(), x, y + 24);
   };
 
-  drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 148);
+  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 148);
   drawField('ORIGINE', formData.nationalite, startX, 226);
   drawFieldSmall('NO. DE SÉRIE', formData.noCarte, startX + 320, 226);
 

@@ -129,7 +129,7 @@ export function renderDemon(
     ctx.fillText(value.toUpperCase(), x, y + 30);
   };
 
-  drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 152);
+  drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 152);
   drawField('ORIGINE', formData.nationalite, startX, 228);
   drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 19);
 

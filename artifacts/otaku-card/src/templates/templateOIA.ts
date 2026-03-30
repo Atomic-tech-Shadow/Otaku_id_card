@@ -96,7 +96,7 @@ export function renderOIA(
     ctx.fillText(value.toUpperCase(), x, y + 35);
   };
 
-  drawHudField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 170);
+  drawHudField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 170);
   drawHudField('ORIGINE', formData.nationalite, startX, 250);
   drawHudField('NO. DE SÉRIE', formData.noCarte, startX + 300, 250);
 
