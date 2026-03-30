@@ -115,7 +115,7 @@ export default function App() {
           <span className="text-[#b91c1c]">RESTRICTED ACCESS</span>
         </div>
         <div className="text-slate-600 flex items-center gap-1.5">
-          CONÇU PAR <BadgeCheck className="w-3 h-3 text-[#3b82f6] shrink-0" strokeWidth={1.5} /><span className="text-[#d4af37] tracking-widest">DEV CID</span>
+          CONÇU PAR <span className="text-[#d4af37] tracking-widest">DEV CID</span><BadgeCheck className="w-3 h-3 text-[#3b82f6] shrink-0" strokeWidth={1.5} />
         </div>
       </footer>
     </div>
