@@ -5,6 +5,7 @@ import { renderShonen } from '../templates/templateShonen';
 import { renderDemon } from '../templates/templateDemon';
 import { renderMagical } from '../templates/templateMagical';
 import { renderSpace } from '../templates/templateSpace';
+import { renderShadowGarden } from '../templates/templateShadowGarden';
 
 export function useCardRenderer(
   canvasRef: React.RefObject<HTMLCanvasElement>,
@@ -30,6 +31,9 @@ export function useCardRenderer(
         break;
       case 'SPACE':
         renderSpace(ctx, canvas, formData, photo);
+        break;
+      case 'SHADOW':
+        renderShadowGarden(ctx, canvas, formData, photo);
         break;
       default:
         renderOIA(ctx, canvas, formData, photo);
