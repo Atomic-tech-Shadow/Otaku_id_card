@@ -1,6 +1,6 @@
 import QRCode from 'qrcode';
 import { FormData } from '../types';
-import { generateMRZ } from '../lib/mrz';
+import { generateMRZ, fillMRZText } from '../lib/mrz';
 
 export function renderShadowGarden(
   ctx: CanvasRenderingContext2D,
@@ -339,5 +339,5 @@ export function renderShadowGarden(
   ctx.fillStyle = '#B0B0C8';
   ctx.font = '18px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine, 44, 604);
+  fillMRZText(ctx, mrzLine, 44, 604, w - 92);
 }

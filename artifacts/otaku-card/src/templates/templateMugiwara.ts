@@ -1,6 +1,6 @@
 import QRCode from 'qrcode';
 import { FormData } from '../types';
-import { generateMRZ } from '../lib/mrz';
+import { generateMRZ, fillMRZText } from '../lib/mrz';
 
 export function renderMugiwara(
   ctx: CanvasRenderingContext2D,
@@ -414,5 +414,5 @@ export function renderMugiwara(
   ctx.fillStyle = '#fbbf24';
   ctx.font = '19px "Courier New", monospace';
   ctx.textAlign = 'left';
-  ctx.fillText(mrzLine, 44, 604);
+  fillMRZText(ctx, mrzLine, 44, 604, w - 92);
 }

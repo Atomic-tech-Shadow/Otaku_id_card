@@ -1,5 +1,21 @@
 import { FormData } from '../types';
 
+export function fillMRZText(
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  targetWidth: number
+): void {
+  const measured = ctx.measureText(text).width;
+  if (measured === 0) return;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(targetWidth / measured, 1);
+  ctx.fillText(text, 0, 0);
+  ctx.restore();
+}
+
 const CHAR_VALUES: Record<string, number> = {};
 const ALPHA = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 for (let i = 0; i < ALPHA.length; i++) CHAR_VALUES[ALPHA[i]] = i;
