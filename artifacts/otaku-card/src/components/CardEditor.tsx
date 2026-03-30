@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera, FileText, Database, Shield, AlertTriangle, Layers } from 'lucide-react';
+import { Camera, FileText, Database, Shield, AlertTriangle, Layers, CreditCard } from 'lucide-react';
 import { FormData, TemplateId } from '../types';
 
 const TEMPLATES: { id: TemplateId; name: string; genre: string; color: string }[] = [
@@ -153,6 +153,35 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload, onTe
             </div>
 
             <InputField label="Nationalité" code="F03" name="nationalite" value={formData.nationalite} onChange={onChange} />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <InputField label="Date de naissance" code="F04" name="dateNaissance" value={formData.dateNaissance} onChange={onChange} />
+              <InputField
+                label="Sexe"
+                code="F05"
+                name="sexe"
+                value={formData.sexe}
+                isSelect={true}
+                options={['M', 'F']}
+                onChange={onChange}
+              />
+            </div>
+          </div>
+
+          {/* Card Info Section */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 text-xs text-[#d4af37] uppercase font-bold tracking-widest border-b border-slate-800 pb-2">
+              <CreditCard className="w-3.5 h-3.5" /> INFORMATIONS DE CARTE
+            </div>
+
+            <InputField label="Numéro de carte" code="C01" name="noCarte" value={formData.noCarte} onChange={onChange} />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <InputField label="Date d'expiration" code="C02" name="dateExpiration" value={formData.dateExpiration} onChange={onChange} />
+              <InputField label="Membre depuis" code="C03" name="membreDepuis" value={formData.membreDepuis} onChange={onChange} />
+            </div>
+
+            <InputField label="Ligne MRZ" code="C04" name="mrzLine" value={formData.mrzLine} onChange={onChange} />
           </div>
 
           {/* Combat Stats Section */}
