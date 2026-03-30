@@ -185,6 +185,23 @@ export function renderShonen(
     qrImg.src = dataUrl;
   }).catch(() => {});
 
+  // Mini info strip under photo
+  const drawMiniField = (label: string, value: string, x: number, y: number) => {
+    ctx.font = 'bold 10px monospace';
+    ctx.fillStyle = '#f97316';
+    ctx.fillText(label, x, y);
+    ctx.font = 'bold 14px sans-serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowBlur = 4;
+    ctx.shadowColor = '#f97316';
+    ctx.fillText(value.toUpperCase(), x, y + 16);
+    ctx.shadowBlur = 0;
+  };
+  drawMiniField('▸ NAISSANCE', formData.dateNaissance, 70, 478);
+  drawMiniField('▸ SEXE', formData.sexe, 215, 478);
+  drawMiniField('▸ EXPIRATION', formData.dateExpiration, 70, 513);
+  drawMiniField('▸ MEMBRE DEP.', formData.membreDepuis, 215, 513);
+
   ctx.fillStyle = 'rgba(0,0,0,0.65)';
   ctx.fillRect(40, 575, w - 80, 45);
   ctx.fillStyle = '#f97316';

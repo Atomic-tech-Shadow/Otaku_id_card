@@ -308,6 +308,23 @@ export function renderShadowGarden(
     qrImg.src = dataUrl;
   }).catch(() => {});
 
+  // Mini info strip under photo
+  const drawMiniField = (label: string, value: string, x: number, y: number) => {
+    ctx.font = 'bold 10px monospace';
+    ctx.fillStyle = '#C8A8E9';
+    ctx.fillText(label, x, y);
+    ctx.font = 'bold 14px sans-serif';
+    ctx.fillStyle = '#e8f4ff';
+    ctx.shadowBlur = 4;
+    ctx.shadowColor = '#5A00FF';
+    ctx.fillText(value.toUpperCase(), x, y + 16);
+    ctx.shadowBlur = 0;
+  };
+  drawMiniField('NAISSANCE', formData.dateNaissance, 70, 470);
+  drawMiniField('SEXE', formData.sexe, 215, 470);
+  drawMiniField('EXPIRATION', formData.dateExpiration, 70, 505);
+  drawMiniField('MEMBRE DEP.', formData.membreDepuis, 215, 505);
+
   // MRZ
   ctx.fillStyle = 'rgba(0,0,0,0.88)';
   ctx.fillRect(40, 577, w - 80, 43);

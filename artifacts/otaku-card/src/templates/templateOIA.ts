@@ -152,6 +152,20 @@ export function renderOIA(
     ctx.fillText('URL INVALIDE', qrX + 10, qrY + 65);
   });
 
+  // Mini info strip under photo
+  const drawMiniField = (label: string, value: string, x: number, y: number) => {
+    ctx.font = 'bold 10px monospace';
+    ctx.fillStyle = '#60a5fa';
+    ctx.fillText(label, x, y);
+    ctx.font = 'bold 14px sans-serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(value.toUpperCase(), x, y + 16);
+  };
+  drawMiniField('[ NAISSANCE ]', formData.dateNaissance, 70, 498);
+  drawMiniField('[ SEXE ]', formData.sexe, 215, 498);
+  drawMiniField('[ EXPIRATION ]', formData.dateExpiration, 70, 533);
+  drawMiniField('[ MEMBRE DEP. ]', formData.membreDepuis, 215, 533);
+
   ctx.fillStyle = 'rgba(0,0,0,0.5)';
   ctx.fillRect(40, 570, w - 80, 50);
   ctx.fillStyle = '#fff';

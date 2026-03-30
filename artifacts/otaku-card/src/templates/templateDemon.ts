@@ -181,6 +181,20 @@ export function renderDemon(
     qrImg.src = dataUrl;
   }).catch(() => {});
 
+  // Mini info strip under photo
+  const drawMiniField = (label: string, value: string, x: number, y: number) => {
+    ctx.font = 'bold 10px monospace';
+    ctx.fillStyle = '#be123c';
+    ctx.fillText(label, x, y);
+    ctx.font = 'bold 14px sans-serif';
+    ctx.fillStyle = '#e2e8f0';
+    ctx.fillText(value.toUpperCase(), x, y + 16);
+  };
+  drawMiniField('⟦ NAISSANCE ⟧', formData.dateNaissance, 70, 478);
+  drawMiniField('⟦ SEXE ⟧', formData.sexe, 215, 478);
+  drawMiniField('⟦ EXPIRATION ⟧', formData.dateExpiration, 70, 513);
+  drawMiniField('⟦ MEMBRE DEP. ⟧', formData.membreDepuis, 215, 513);
+
   ctx.fillStyle = 'rgba(0,0,0,0.70)';
   ctx.fillRect(40, 575, w - 80, 45);
   ctx.fillStyle = '#be123c';

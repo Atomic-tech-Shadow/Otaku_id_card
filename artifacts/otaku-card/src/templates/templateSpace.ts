@@ -214,6 +214,23 @@ export function renderSpace(
     qrImg.src = dataUrl;
   }).catch(() => {});
 
+  // Mini info strip under photo
+  const drawMiniField = (label: string, value: string, x: number, y: number) => {
+    ctx.font = '10px monospace';
+    ctx.fillStyle = '#0d9488';
+    ctx.fillText(label.toUpperCase(), x, y);
+    ctx.font = 'bold 14px sans-serif';
+    ctx.fillStyle = '#e2e8f0';
+    ctx.shadowBlur = 3;
+    ctx.shadowColor = '#06b6d4';
+    ctx.fillText(value.toUpperCase(), x, y + 16);
+    ctx.shadowBlur = 0;
+  };
+  drawMiniField('NAISSANCE', formData.dateNaissance, 70, 468);
+  drawMiniField('SEXE', formData.sexe, 215, 468);
+  drawMiniField('EXPIRATION', formData.dateExpiration, 70, 503);
+  drawMiniField('MEMBRE DEP.', formData.membreDepuis, 215, 503);
+
   ctx.fillStyle = 'rgba(0,0,0,0.80)';
   ctx.fillRect(40, 577, w - 80, 43);
   ctx.strokeStyle = '#06b6d4';
