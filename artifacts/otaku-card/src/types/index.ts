@@ -1,4 +1,4 @@
-export type TemplateId = 'OIA' | 'SHONEN' | 'DEMON' | 'MAGICAL' | 'SPACE' | 'SHADOW' | 'MUGIWARA';
+export type TemplateId = 'OIA' | 'SHONEN' | 'DEMON' | 'MAGICAL' | 'SPACE' | 'SHADOW' | 'MUGIWARA' | 'SOLO';
 
 export interface FormData {
   nom: string;

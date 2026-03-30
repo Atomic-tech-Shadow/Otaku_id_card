@@ -10,6 +10,7 @@ const TEMPLATES: { id: TemplateId; name: string; genre: string; color: string }[
   { id: 'SPACE',   name: 'VOID RUNNER',    genre: 'Space Opera',      color: '#06b6d4' },
   { id: 'SHADOW',  name: 'SHADOW GARDEN',  genre: 'Eminence in Shadow', color: '#5A00FF' },
   { id: 'MUGIWARA', name: 'MUGIWARA',      genre: 'One Piece',          color: '#fbbf24' },
+  { id: 'SOLO',     name: 'SOLO LEVELING', genre: 'Hunter System',      color: '#00b4ff' },
 ];
 
 interface InputFieldProps {
