@@ -6,6 +6,7 @@ import { renderDemon } from '../templates/templateDemon';
 import { renderMagical } from '../templates/templateMagical';
 import { renderSpace } from '../templates/templateSpace';
 import { renderShadowGarden } from '../templates/templateShadowGarden';
+import { renderMugiwara } from '../templates/templateMugiwara';
 
 export function useCardRenderer(
   canvasRef: React.RefObject<HTMLCanvasElement>,
@@ -34,6 +35,9 @@ export function useCardRenderer(
         break;
       case 'SHADOW':
         renderShadowGarden(ctx, canvas, formData, photo);
+        break;
+      case 'MUGIWARA':
+        renderMugiwara(ctx, canvas, formData, photo);
         break;
       default:
         renderOIA(ctx, canvas, formData, photo);
