@@ -154,7 +154,7 @@ export function renderSpace(
   };
 
   drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 148);
-  drawField('ORIGINE', formData.nationalite, startX, 226);
+  drawField('NATIONALITÉ', formData.nationalite, startX, 226);
   drawFieldSmall('NO. DE SÉRIE', formData.noCarte, startX + 320, 226);
 
   ctx.font = '11px monospace';

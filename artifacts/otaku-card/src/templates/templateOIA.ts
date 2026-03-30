@@ -97,7 +97,7 @@ export function renderOIA(
   };
 
   drawHudField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 170);
-  drawHudField('ORIGINE', formData.nationalite, startX, 250);
+  drawHudField('NATIONALITÉ', formData.nationalite, startX, 250);
   drawHudField('NO. DE SÉRIE', formData.noCarte, startX + 300, 250);
 
   ctx.font = 'bold 16px monospace';

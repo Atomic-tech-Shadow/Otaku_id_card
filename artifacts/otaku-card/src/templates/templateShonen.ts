@@ -125,7 +125,7 @@ export function renderShonen(
   };
 
   drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 152);
-  drawField('ORIGINE', formData.nationalite, startX, 228);
+  drawField('NATIONALITÉ', formData.nationalite, startX, 228);
   drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 19);
 
   ctx.font = 'bold 13px monospace';

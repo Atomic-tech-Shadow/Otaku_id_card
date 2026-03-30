@@ -149,7 +149,7 @@ export function renderMagical(
   };
 
   drawField('NOM & PRÉNOMS', `${formData.nom} ${formData.prenom}`, startX, 152);
-  drawField('ORIGINE', formData.nationalite, startX, 228);
+  drawField('NATIONALITÉ', formData.nationalite, startX, 228);
   drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 18);
 
   ctx.font = 'bold 12px monospace';
