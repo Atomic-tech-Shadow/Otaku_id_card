@@ -64,6 +64,125 @@ export function renderMugiwara(
   }
   ctx.restore();
 
+  // ── Décors thématiques ──────────────────────────────────
+
+  // Deux katanas croisés de Zoro
+  const drawKatana = (sx: number, sy: number, ex: number, ey: number, alpha: number) => {
+    const angle = Math.atan2(ey - sy, ex - sx);
+    const len   = Math.hypot(ex - sx, ey - sy);
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.translate(sx, sy);
+    ctx.rotate(angle);
+
+    // Lame
+    ctx.fillStyle = '#475569';
+    ctx.beginPath();
+    ctx.rect(0, -3, len * 0.76, 6);
+    ctx.fill();
+
+    // Reflet lame
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, -2); ctx.lineTo(len * 0.76, -1.5);
+    ctx.stroke();
+
+    // Pointe effilée
+    ctx.fillStyle = '#64748b';
+    ctx.beginPath();
+    ctx.moveTo(len * 0.76, -3);
+    ctx.lineTo(len * 0.76 + 20, 0);
+    ctx.lineTo(len * 0.76, 3);
+    ctx.closePath();
+    ctx.fill();
+
+    // Tsuba (garde circulaire)
+    ctx.fillStyle = '#92400e';
+    ctx.beginPath();
+    ctx.ellipse(len * 0.22, 0, 10, 18, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.ellipse(len * 0.22, 0, 10, 18, 0, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Manche (tsuka)
+    ctx.fillStyle = '#1e3a5f';
+    ctx.beginPath();
+    ctx.rect(-(len * 0.24), -5, len * 0.22, 10);
+    ctx.fill();
+
+    // Enroulement or du manche
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 1.5;
+    ctx.globalAlpha = alpha * 0.9;
+    for (let i = 0; i < 7; i++) {
+      const xp = -(len * 0.24) + i * (len * 0.22 / 7) + 3;
+      ctx.beginPath();
+      ctx.moveTo(xp, -5); ctx.lineTo(xp - 3, 5);
+      ctx.stroke();
+    }
+    ctx.restore();
+  };
+
+  drawKatana(310, 100, 980, 555, 0.06);   // diag haut-gauche → bas-droite
+  drawKatana(310, 555, 980, 100, 0.06);   // diag bas-gauche  → haut-droite
+
+  // Chapeau de paille de Luffy
+  const drawStrawHat = (cx: number, cy: number, r: number, alpha: number) => {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.translate(cx, cy);
+
+    const brimRx = r;
+    const brimRy = r * 0.22;
+
+    // Ombre portée sous le bord
+    ctx.fillStyle = '#78350f';
+    ctx.beginPath();
+    ctx.ellipse(3, brimRy * 0.5, brimRx * 0.84, brimRy * 0.65, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Bord (brim)
+    ctx.fillStyle = '#d97706';
+    ctx.beginPath();
+    ctx.ellipse(0, 0, brimRx, brimRy, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Dôme du chapeau
+    ctx.fillStyle = '#fbbf24';
+    ctx.beginPath();
+    ctx.ellipse(0, -r * 0.18, brimRx * 0.64, r * 0.55, 0, Math.PI, 0);
+    ctx.ellipse(0, 0, brimRx * 0.64, brimRy * 0.9, 0, 0, Math.PI);
+    ctx.closePath();
+    ctx.fill();
+
+    // Bande rouge (signature Luffy)
+    ctx.strokeStyle = '#dc2626';
+    ctx.lineWidth = r * 0.09;
+    ctx.beginPath();
+    ctx.ellipse(0, -r * 0.02, brimRx * 0.64, brimRy * 1.15, 0, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Texture paille (lignes horizontales fines)
+    ctx.globalAlpha = alpha * 0.45;
+    ctx.strokeStyle = '#92400e';
+    ctx.lineWidth = 0.8;
+    for (let i = -4; i <= 4; i++) {
+      const lineY = -r * 0.18 + i * (r * 0.48 / 8);
+      const spread = brimRx * 0.64 * (1 - Math.abs(i) * 0.07);
+      ctx.beginPath();
+      ctx.ellipse(0, lineY, spread, 2.5, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  };
+
+  drawStrawHat(820, 320, 135, 0.09);
+
   // ── Triangles pirate rouge bordeaux ──────────────────────
   ctx.fillStyle = '#6b1a1a';
   ctx.beginPath();
