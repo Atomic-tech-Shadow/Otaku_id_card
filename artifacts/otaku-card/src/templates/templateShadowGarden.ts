@@ -235,14 +235,14 @@ export function renderShadowGarden(
     ctx.fillText(value.toUpperCase(), x, y + 25);
   };
 
-  drawField('AGENT', `${formData.nom} ${formData.prenom}`, startX, 150);
+  drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 150);
   drawField('ORIGINE', formData.nationalite, startX, 228);
-  drawFieldSmall('CODE SHADOW', formData.noCarte, startX + 315, 228);
+  drawFieldSmall('NO. DE SÉRIE', formData.noCarte, startX + 315, 228);
 
   // Power bar
   ctx.font = 'bold 12px monospace';
   ctx.fillStyle = '#C8A8E9';
-  ctx.fillText("PUISSANCE DE L'OMBRE", startX, 308);
+  ctx.fillText('NIVEAU DE PUISSANCE', startX, 308);
 
   const barWidth = 558;
   const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
@@ -279,8 +279,8 @@ export function renderShadowGarden(
     ctx.shadowBlur = 0;
   }
 
-  drawField('RANG', formData.classe, startX, 382);
-  drawField('CAPACITÉS', formData.expertise, startX, 458, 22);
+  drawField('CLASSE DE COMBAT', formData.classe, startX, 382);
+  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 458, 22);
 
   // QR
   const qrX = 840, qrY = 445, qrSize = 118;

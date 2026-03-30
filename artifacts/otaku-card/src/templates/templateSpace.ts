@@ -153,9 +153,9 @@ export function renderSpace(
     ctx.fillText(value.toUpperCase(), x, y + 24);
   };
 
-  drawField('AGENT', `${formData.nom} ${formData.prenom}`, startX, 148);
+  drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 148);
   drawField('ORIGINE', formData.nationalite, startX, 226);
-  drawFieldSmall('ID NO.', formData.noCarte, startX + 320, 226);
+  drawFieldSmall('NO. DE SÉRIE', formData.noCarte, startX + 320, 226);
 
   ctx.font = '11px monospace';
   ctx.fillStyle = '#0d9488';
@@ -189,8 +189,8 @@ export function renderSpace(
   ctx.fillText(`${power}%`, startX + barWidth, 311);
   ctx.textAlign = 'left';
 
-  drawField('GRADE', formData.classe, startX, 378);
-  drawField('COMPÉTENCES', formData.expertise, startX, 452, 22);
+  drawField('CLASSE DE COMBAT', formData.classe, startX, 378);
+  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 452, 22);
 
   const qrX = 840, qrY = 445, qrSize = 118;
   ctx.fillStyle = '#020202';

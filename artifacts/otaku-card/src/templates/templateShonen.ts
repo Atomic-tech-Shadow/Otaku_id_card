@@ -124,13 +124,13 @@ export function renderShonen(
     ctx.shadowBlur = 0;
   };
 
-  drawField('COMBATTANT', `${formData.nom} ${formData.prenom}`, startX, 152);
+  drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 152);
   drawField('ORIGINE', formData.nationalite, startX, 228);
-  drawField('ID NO.', formData.noCarte, startX + 295, 228, 19);
+  drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 19);
 
   ctx.font = 'bold 13px monospace';
   ctx.fillStyle = '#f97316';
-  ctx.fillText('▸ NIVEAU DE PUISSANCE / KI', startX, 308);
+  ctx.fillText('▸ NIVEAU DE PUISSANCE', startX, 308);
 
   const barWidth = 558;
   const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
@@ -160,8 +160,8 @@ export function renderShonen(
   ctx.fillText(`${power} / 100`, startX + barWidth, 315);
   ctx.textAlign = 'left';
 
-  drawField('RANG', formData.classe, startX, 385);
-  drawField('TECHNIQUE SIGNATURE', formData.expertise, startX, 460, 22);
+  drawField('CLASSE DE COMBAT', formData.classe, startX, 385);
+  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 460, 22);
 
   const qrX = 840, qrY = 445, qrSize = 118;
   ctx.fillStyle = '#0a0200';

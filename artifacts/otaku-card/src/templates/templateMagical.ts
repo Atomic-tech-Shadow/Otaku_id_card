@@ -150,11 +150,11 @@ export function renderMagical(
 
   drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 152);
   drawField('ORIGINE', formData.nationalite, startX, 228);
-  drawField('CODE MAGIQUE', formData.noCarte, startX + 295, 228, 18);
+  drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 18);
 
   ctx.font = 'bold 12px monospace';
   ctx.fillStyle = '#a855f7';
-  ctx.fillText('✦ NIVEAU DE MAGIE', startX, 308);
+  ctx.fillText('✦ NIVEAU DE PUISSANCE', startX, 308);
 
   const barWidth = 558;
   const power = Math.max(0, Math.min(100, formData.powerLevel || 0));
@@ -178,8 +178,8 @@ export function renderMagical(
     ctx.shadowBlur = 0;
   }
 
-  drawField('RANG MAGIQUE', formData.classe, startX, 383);
-  drawField('MAGIE SPÉCIALE', formData.expertise, startX, 458, 22);
+  drawField('CLASSE DE COMBAT', formData.classe, startX, 383);
+  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 458, 22);
 
   const qrX = 838, qrY = 445, qrSize = 118;
   ctx.fillStyle = '#0d0015';

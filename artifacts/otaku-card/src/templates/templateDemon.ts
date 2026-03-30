@@ -129,9 +129,9 @@ export function renderDemon(
     ctx.fillText(value.toUpperCase(), x, y + 30);
   };
 
-  drawField('CHASSEUR', `${formData.nom} ${formData.prenom}`, startX, 152);
+  drawField('IDENTITÉ', `${formData.nom} ${formData.prenom}`, startX, 152);
   drawField('ORIGINE', formData.nationalite, startX, 228);
-  drawField('MATRICULE', formData.noCarte, startX + 295, 228, 19);
+  drawField('NO. DE SÉRIE', formData.noCarte, startX + 295, 228, 19);
 
   ctx.font = 'bold 13px monospace';
   ctx.fillStyle = '#be123c';
@@ -156,8 +156,8 @@ export function renderDemon(
     ctx.fill();
   }
 
-  drawField('RANG', formData.classe, startX, 383);
-  drawField('RESPIRATION', formData.expertise, startX, 458, 22);
+  drawField('CLASSE DE COMBAT', formData.classe, startX, 383);
+  drawField('CAPACITÉS SPÉCIALES', formData.expertise, startX, 458, 22);
 
   const qrX = 840, qrY = 445, qrSize = 118;
   ctx.fillStyle = '#050008';
