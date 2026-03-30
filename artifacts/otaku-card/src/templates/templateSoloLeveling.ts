@@ -410,34 +410,6 @@ export function renderSoloLeveling(
   drawMiniField('[ EXPIRATION ]', formData.dateExpiration, 70, 505);
   drawMiniField('[ MEMBRE DEP. ]', formData.membreDepuis, 215, 505);
 
-  // ── RANK BADGE — Solo Leveling class indicator ───────────────
-  const rankMap: Record<string, { color: string; label: string }> = {
-    'S-CLASS':  { color: '#ffd700', label: '◆ SHADOW MONARCH ◆' },
-    'A-CLASS':  { color: '#ff6622', label: '◆ NATIONAL LEVEL ◆' },
-    'B-CLASS':  { color: '#aa44ff', label: '◆ HIGH GRADE ◆' },
-    'GOD TIER': { color: '#ff2255', label: '⬡  MONARCH TIER  ⬡' },
-    'CIVILIAN': { color: '#4a5e77', label: '○  NON-AWAKENED  ○' },
-  };
-  const rk = rankMap[formData.classe] ?? { color: '#00b4ff', label: `◆ ${formData.classe} ◆` };
-
-  ctx.fillStyle = `${rk.color}16`;
-  ctx.strokeStyle = rk.color;
-  ctx.lineWidth = 1.2;
-  ctx.shadowBlur = 10;
-  ctx.shadowColor = rk.color;
-  ctx.beginPath();
-  ctx.roundRect(70, 530, 245, 26, 4);
-  ctx.fill();
-  ctx.stroke();
-  ctx.shadowBlur = 0;
-  ctx.fillStyle = rk.color;
-  ctx.font = 'bold 11px "Courier New", monospace';
-  ctx.textAlign = 'center';
-  ctx.shadowBlur = 8;
-  ctx.shadowColor = rk.color;
-  ctx.fillText(rk.label, 70 + 245 / 2, 530 + 17);
-  ctx.shadowBlur = 0;
-  ctx.textAlign = 'left';
 
   // ════════════════════════════════════════════════════════════
   //  MRZ ZONE — same as all templates (y=577)
