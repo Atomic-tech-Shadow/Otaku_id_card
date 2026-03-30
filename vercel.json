@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm --filter @workspace/otaku-card run build:vercel",
+  "buildCommand": "pnpm --filter @workspace/otaku-card run build:vercel && mv artifacts/otaku-card/dist dist",
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
   "framework": null,
