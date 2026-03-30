@@ -53,11 +53,11 @@ export default function App() {
       {/* Top Navigation Bar */}
       <nav className="border-b border-slate-800 bg-[#0f1629] relative z-20 px-4 sm:px-6 py-3 flex items-center justify-between gap-3 shadow-lg">
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <img src={oiaLogo} alt="O.I.A. Logo" className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 drop-shadow-lg" />
+          <img src={oiaLogo} alt="O.I.A Logo" className="w-9 h-9 sm:w-12 sm:h-12 shrink-0 drop-shadow-lg" />
           <div className="flex flex-col min-w-0">
             <div className="flex items-center gap-1.5">
               <span className="text-base sm:text-xl font-bold tracking-widest text-slate-100">
-                O.I.A.
+                O.I.A
               </span>
               <BadgeCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#3b82f6] shrink-0" strokeWidth={1.5} />
             </div>
