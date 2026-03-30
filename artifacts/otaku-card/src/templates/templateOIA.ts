@@ -56,7 +56,7 @@ export function renderOIA(
   ctx.fillStyle = '#ffffff';
   ctx.font = 'bold 48px "Impact", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('OTAKU IDENTIFICATION CARD', w / 2, 70);
+  ctx.fillText("CARTE D'IDENTITÉ OTAKU", w / 2, 70);
   ctx.shadowBlur = 0;
 
   const photoX = 70;

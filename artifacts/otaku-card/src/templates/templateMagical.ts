@@ -83,16 +83,11 @@ export function renderMagical(
 
   ctx.shadowBlur = 28;
   ctx.shadowColor = '#ec4899';
-  ctx.fillStyle = '#f9a8d4';
-  ctx.font = 'bold 46px "Impact", sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 48px "Impact", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('REGISTRE MAGIQUE', w / 2, 60);
+  ctx.fillText("CARTE D'IDENTITÉ OTAKU", w / 2, 68);
   ctx.shadowBlur = 0;
-
-  ctx.font = 'bold 12px monospace';
-  ctx.fillStyle = '#a855f7';
-  ctx.textAlign = 'center';
-  ctx.fillText('✦  魔法少女  —  CARTE D\'ACCRÉDITATION MAGIQUE  ✦', w / 2, 82);
 
   ctx.strokeStyle = '#ec4899';
   ctx.lineWidth = 1;

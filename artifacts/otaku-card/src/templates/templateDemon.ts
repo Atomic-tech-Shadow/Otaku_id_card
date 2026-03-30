@@ -74,16 +74,11 @@ export function renderDemon(
 
   ctx.shadowBlur = 22;
   ctx.shadowColor = '#be123c';
-  ctx.fillStyle = '#dc2626';
-  ctx.font = 'bold 40px "Impact", sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 48px "Impact", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('CORPS DES POURFENDEURS', w / 2, 56);
+  ctx.fillText("CARTE D'IDENTITÉ OTAKU", w / 2, 68);
   ctx.shadowBlur = 0;
-
-  ctx.font = 'bold 12px monospace';
-  ctx.fillStyle = '#7f1d1d';
-  ctx.textAlign = 'center';
-  ctx.fillText('鬼殺隊  —  IDENTIFICATION OFFICIELLE', w / 2, 78);
 
   ctx.strokeStyle = '#7f1d1d';
   ctx.lineWidth = 1.5;

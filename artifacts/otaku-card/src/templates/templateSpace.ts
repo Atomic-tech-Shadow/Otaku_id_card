@@ -76,16 +76,11 @@ export function renderSpace(
 
   ctx.shadowBlur = 18;
   ctx.shadowColor = '#06b6d4';
-  ctx.fillStyle = '#06b6d4';
-  ctx.font = 'bold 44px "Impact", sans-serif';
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 48px "Impact", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('STELLAR FEDERATION', w / 2, 58);
+  ctx.fillText("CARTE D'IDENTITÉ OTAKU", w / 2, 68);
   ctx.shadowBlur = 0;
-
-  ctx.font = '11px monospace';
-  ctx.fillStyle = '#0d9488';
-  ctx.textAlign = 'center';
-  ctx.fillText('IDENTIFICATION RECORD  ·  DIVISION ALPHA', w / 2, 80);
 
   ctx.strokeStyle = '#06b6d4';
   ctx.lineWidth = 1;

@@ -67,15 +67,10 @@ export function renderShonen(
   ctx.shadowBlur = 25;
   ctx.shadowColor = '#f97316';
   ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 50px "Impact", sans-serif';
+  ctx.font = 'bold 48px "Impact", sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('BATTLE RECORD', w / 2, 62);
+  ctx.fillText("CARTE D'IDENTITÉ OTAKU", w / 2, 68);
   ctx.shadowBlur = 0;
-
-  ctx.font = 'bold 13px monospace';
-  ctx.fillStyle = '#f97316';
-  ctx.textAlign = 'right';
-  ctx.fillText('戦闘データ — FICHE OFFICIELLE', w - 55, 48);
 
   ctx.strokeStyle = '#f97316';
   ctx.lineWidth = 2;
