@@ -1,6 +1,14 @@
 import React from 'react';
-import { Camera, FileText, Database, Shield, AlertTriangle } from 'lucide-react';
-import { FormData } from '../types';
+import { Camera, FileText, Database, Shield, AlertTriangle, Layers } from 'lucide-react';
+import { FormData, TemplateId } from '../types';
+
+const TEMPLATES: { id: TemplateId; name: string; genre: string; color: string }[] = [
+  { id: 'OIA',     name: 'O.I.A STANDARD', genre: 'Mecha / Cyber',    color: '#3b82f6' },
+  { id: 'SHONEN',  name: 'BATTLE RECORD',  genre: 'Shōnen / Combat',  color: '#f97316' },
+  { id: 'DEMON',   name: 'DEMON SLAYER',   genre: 'Dark Fantasy',     color: '#be123c' },
+  { id: 'MAGICAL', name: 'MAGICAL SOUL',   genre: 'Mahou Shoujo',     color: '#ec4899' },
+  { id: 'SPACE',   name: 'VOID RUNNER',    genre: 'Space Opera',      color: '#06b6d4' },
+];
 
 interface InputFieldProps {
   label: string;
@@ -58,9 +66,10 @@ interface CardEditorProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onPhotoChange: (dataUrl: string) => void;
   onDownload: () => void;
+  onTemplateChange: (template: TemplateId) => void;
 }
 
-export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: CardEditorProps) {
+export function CardEditor({ formData, onChange, onPhotoChange, onDownload, onTemplateChange }: CardEditorProps) {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -85,6 +94,51 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload }: Ca
         </div>
 
         <div className="space-y-6">
+
+          {/* Template Selection */}
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 text-xs text-[#d4af37] uppercase font-bold tracking-widest border-b border-slate-800 pb-2">
+              <Layers className="w-3.5 h-3.5" /> TEMPLATE DE CARTE
+            </div>
+            <div className="grid grid-cols-1 gap-2">
+              {TEMPLATES.map((t) => {
+                const isActive = formData.template === t.id;
+                return (
+                  <button
+                    key={t.id}
+                    onClick={() => onTemplateChange(t.id)}
+                    className="relative flex items-center justify-between px-3 py-2.5 border transition-all duration-150 text-left touch-manipulation"
+                    style={{
+                      background: isActive ? `${t.color}12` : 'transparent',
+                      borderColor: isActive ? t.color : '#334155',
+                    }}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div
+                        className="w-2.5 h-2.5 rounded-full shrink-0"
+                        style={{ background: isActive ? t.color : '#334155', boxShadow: isActive ? `0 0 6px ${t.color}` : 'none' }}
+                      />
+                      <span
+                        className="text-[11px] font-mono font-bold tracking-widest uppercase"
+                        style={{ color: isActive ? t.color : '#94a3b8' }}
+                      >
+                        {t.name}
+                      </span>
+                    </div>
+                    <span className="text-[9px] font-mono text-slate-600 uppercase tracking-wide shrink-0">
+                      {t.genre}
+                    </span>
+                    {isActive && (
+                      <div
+                        className="absolute right-0 top-0 bottom-0 w-0.5"
+                        style={{ background: t.color }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
           {/* Identity Section */}
           <div className="space-y-3">

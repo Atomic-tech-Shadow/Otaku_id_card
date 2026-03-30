@@ -1,3 +1,5 @@
+export type TemplateId = 'OIA' | 'SHONEN' | 'DEMON' | 'MAGICAL' | 'SPACE';
+
 export interface FormData {
   nom: string;
   prenom: string;
@@ -12,4 +14,5 @@ export interface FormData {
   powerLevel: number;
   mrzLine: string;
   qrUrl: string;
+  template: TemplateId;
 }

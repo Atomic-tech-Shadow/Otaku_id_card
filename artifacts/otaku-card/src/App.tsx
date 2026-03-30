@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { CardEditor } from './components/CardEditor';
 import { CardPreview } from './components/CardPreview';
 import { useCardRenderer } from './hooks/useCardRenderer';
-import { FormData } from './types';
+import { FormData, TemplateId } from './types';
 import { ShieldAlert, BadgeCheck } from 'lucide-react';
 import oiaLogo from './assets/oia-logo.svg';
 
@@ -20,6 +20,7 @@ const DEFAULT_FORM_DATA: FormData = {
   powerLevel: 95,
   mrzLine: 'P<OTAKU<SAITAMA<<<<GENOS<<<0A9928102M1905051<<<JP<<<9',
   qrUrl: 'https://otaku-agency.org',
+  template: 'OIA',
 };
 
 export default function App() {
@@ -35,6 +36,10 @@ export default function App() {
       ...prev,
       [name]: name === 'powerLevel' ? (parseInt(value, 10) || 0) : value,
     }));
+  };
+
+  const handleTemplateChange = (template: TemplateId) => {
+    setFormData((prev) => ({ ...prev, template }));
   };
 
   const handleDownload = () => {
@@ -101,6 +106,7 @@ export default function App() {
               onChange={handleInputChange}
               onPhotoChange={setPhoto}
               onDownload={handleDownload}
+              onTemplateChange={handleTemplateChange}
             />
           </div>
         </div>
