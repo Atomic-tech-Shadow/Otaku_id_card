@@ -8,6 +8,7 @@ import { renderSpace } from '../templates/templateSpace';
 import { renderShadowGarden } from '../templates/templateShadowGarden';
 import { renderMugiwara } from '../templates/templateMugiwara';
 import { renderSoloLeveling } from '../templates/templateSoloLeveling';
+import { renderJJK } from '../templates/templateJJK';
 
 export function useCardRenderer(
   canvasRef: React.RefObject<HTMLCanvasElement>,
@@ -42,6 +43,9 @@ export function useCardRenderer(
         break;
       case 'SOLO':
         renderSoloLeveling(ctx, canvas, formData, photo);
+        break;
+      case 'JJK':
+        renderJJK(ctx, canvas, formData, photo);
         break;
       default:
         renderOIA(ctx, canvas, formData, photo);
