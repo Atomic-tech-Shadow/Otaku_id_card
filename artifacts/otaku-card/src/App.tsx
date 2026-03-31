@@ -1,10 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CardEditor } from './components/CardEditor';
 import { CardPreview } from './components/CardPreview';
 import { useCardRenderer } from './hooks/useCardRenderer';
 import { FormData, TemplateId } from './types';
 import { ShieldAlert, BadgeCheck } from 'lucide-react';
 import oiaLogo from './assets/oia-logo.svg';
+import { generateCardNumber } from './lib/cardNumber';
 
 const DEFAULT_FORM_DATA: FormData = {
   nom: 'SAITAMA',
@@ -13,7 +14,7 @@ const DEFAULT_FORM_DATA: FormData = {
   dateNaissance: '19 MAI 2005',
   sexe: 'M',
   nationalite: 'JAPONAISE',
-  noCarte: 'OA-JP-9928102',
+  noCarte: generateCardNumber('SAITAMA', 'GENOS', 'JAPONAISE', 'OIA'),
   dateExpiration: '31 DÉC 2030',
   classe: 'S-CLASS',
   expertise: 'CYBORG, INCINÉRATION',
@@ -27,6 +28,13 @@ export default function App() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [formData, setFormData] = useState<FormData>(DEFAULT_FORM_DATA);
   const [photo, setPhoto] = useState<string | null>(null);
+
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      noCarte: generateCardNumber(prev.nom, prev.prenom, prev.nationalite, prev.template),
+    }));
+  }, [formData.nom, formData.prenom, formData.nationalite, formData.template]);
 
   useCardRenderer(canvasRef, formData, photo);
 

@@ -196,11 +196,9 @@ export function CardEditor({ formData, onChange, onPhotoChange, onDownload, onTe
               <CreditCard className="w-3.5 h-3.5" /> INFORMATIONS DE CARTE
             </div>
 
-            <InputField label="Numéro de carte" code="C01" name="noCarte" value={formData.noCarte} onChange={onChange} />
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <InputField label="Date d'expiration" code="C02" name="dateExpiration" value={formData.dateExpiration} onChange={onChange} />
-              <InputField label="Membre depuis" code="C03" name="membreDepuis" value={formData.membreDepuis} onChange={onChange} />
+              <InputField label="Date d'expiration" code="C01" name="dateExpiration" value={formData.dateExpiration} onChange={onChange} />
+              <InputField label="Membre depuis" code="C02" name="membreDepuis" value={formData.membreDepuis} onChange={onChange} />
             </div>
 
           </div>
