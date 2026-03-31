@@ -12,6 +12,7 @@ const TEMPLATES: { id: TemplateId; name: string; genre: string; color: string }[
   { id: 'MUGIWARA', name: 'MUGIWARA',      genre: 'One Piece',          color: '#fbbf24' },
   { id: 'SOLO',     name: 'SOLO LEVELING', genre: 'Hunter System',      color: '#00b4ff' },
   { id: 'JJK',      name: 'SORCIER JJK',  genre: 'Jujutsu Kaisen',     color: '#9922cc' },
+  { id: 'HERO',     name: 'HERO BUREAU',  genre: 'My Hero Academia',   color: '#0f2057' },
 ];
 
 interface InputFieldProps {

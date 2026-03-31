@@ -10,6 +10,7 @@ const TEMPLATE_PREFIX: Record<TemplateId, string> = {
   MUGIWARA: 'MW',
   SOLO: 'SL',
   JJK: 'JK',
+  HERO: 'HB',
 };
 
 const NATIONALITY_CODES: Record<string, string> = {
