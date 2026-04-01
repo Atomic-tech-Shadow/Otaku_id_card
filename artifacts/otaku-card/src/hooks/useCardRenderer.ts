@@ -10,6 +10,11 @@ import { renderMugiwara } from '../templates/templateMugiwara';
 import { renderSoloLeveling } from '../templates/templateSoloLeveling';
 import { renderJJK } from '../templates/templateJJK';
 import { renderHero } from '../templates/templateHero';
+import { renderKonoha } from '../templates/templateKonoha';
+import { renderDragonBall } from '../templates/templateDragonBall';
+import { renderSoulSociety } from '../templates/templateSoulSociety';
+import { renderFairyTail } from '../templates/templateFairyTail';
+import { renderChainsawMan } from '../templates/templateChainsawMan';
 
 export function useCardRenderer(
   canvasRef: React.RefObject<HTMLCanvasElement>,
@@ -50,6 +55,21 @@ export function useCardRenderer(
         break;
       case 'HERO':
         renderHero(ctx, canvas, formData, photo);
+        break;
+      case 'KONOHA':
+        renderKonoha(ctx, canvas, formData, photo);
+        break;
+      case 'DBZ':
+        renderDragonBall(ctx, canvas, formData, photo);
+        break;
+      case 'SOUL':
+        renderSoulSociety(ctx, canvas, formData, photo);
+        break;
+      case 'FAIRY':
+        renderFairyTail(ctx, canvas, formData, photo);
+        break;
+      case 'CSM':
+        renderChainsawMan(ctx, canvas, formData, photo);
         break;
       default:
         renderOIA(ctx, canvas, formData, photo);

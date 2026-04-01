@@ -11,6 +11,11 @@ const TEMPLATE_PREFIX: Record<TemplateId, string> = {
   SOLO: 'SL',
   JJK: 'JK',
   HERO: 'HB',
+  KONOHA: 'KN',
+  DBZ: 'DB',
+  SOUL: 'SS',
+  FAIRY: 'FT',
+  CSM: 'CM',
 };
 
 const NATIONALITY_CODES: Record<string, string> = {

@@ -12,7 +12,12 @@ const TEMPLATES: { id: TemplateId; name: string; genre: string; color: string }[
   { id: 'MUGIWARA', name: 'MUGIWARA',      genre: 'One Piece',          color: '#fbbf24' },
   { id: 'SOLO',     name: 'SOLO LEVELING', genre: 'Hunter System',      color: '#00b4ff' },
   { id: 'JJK',      name: 'SORCIER JJK',  genre: 'Jujutsu Kaisen',     color: '#9922cc' },
-  { id: 'HERO',     name: 'HERO BUREAU',  genre: 'My Hero Academia',   color: '#0f2057' },
+  { id: 'HERO',     name: 'HERO BUREAU',    genre: 'My Hero Academia',  color: '#0f2057' },
+  { id: 'KONOHA',   name: 'KONOHA',         genre: 'Naruto',            color: '#e85c00' },
+  { id: 'DBZ',      name: 'DRAGON BALL',    genre: 'Dragon Ball Z',     color: '#ffaa00' },
+  { id: 'SOUL',     name: 'SOUL SOCIETY',   genre: 'Bleach',            color: '#c0c0c0' },
+  { id: 'FAIRY',    name: 'FAIRY TAIL',     genre: 'Fairy Tail',        color: '#e82020' },
+  { id: 'CSM',      name: 'CHAINSAW MAN',   genre: 'Chainsaw Man',      color: '#cc0000' },
 ];
 
 interface InputFieldProps {
