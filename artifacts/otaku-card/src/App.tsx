@@ -8,18 +8,18 @@ import oiaLogo from './assets/oia-logo.svg';
 import { generateCardNumber } from './lib/cardNumber';
 
 const DEFAULT_FORM_DATA: FormData = {
-  nom: 'SAITAMA',
-  prenom: 'GENOS',
-  pseudo: 'CYBORG HERO',
-  dateNaissance: '19 MAI 2005',
+  nom: 'KAGENOU',
+  prenom: 'CID',
+  pseudo: 'SHADOW',
+  dateNaissance: '19 MAR 2006',
   sexe: 'M',
   nationalite: 'JAPONAISE',
-  noCarte: generateCardNumber('SAITAMA', 'GENOS', 'JAPONAISE', 'OIA'),
+  noCarte: generateCardNumber('SHADOW', 'GARDE', 'JAPONAISE', 'OIA'),
   dateExpiration: '31 DÉC 2030',
   classe: 'S-CLASS',
-  expertise: 'CYBORG, INCINÉRATION',
+  expertise: 'ATOMIC, POWER',
   membreDepuis: '05 JUIN 2022',
-  powerLevel: 95,
+  powerLevel: 100,
   qrUrl: 'https://otaku-agency.org',
   template: 'OIA',
 };
